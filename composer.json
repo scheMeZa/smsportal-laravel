@@ -14,6 +14,11 @@
             "name": "Jadon Brown",
             "email": "jaybeezorr@gmail.com",
             "role": "Developer"
+        },
+        {
+            "name": "John McMurray",
+            "email": "john@softsmart.co.za",
+            "role": "Constributor"
         }
     ],
     "require": {

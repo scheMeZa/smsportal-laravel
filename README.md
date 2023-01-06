@@ -27,8 +27,58 @@ You can find your client id & secret in your [SMSPortal control panel](https://c
 ## Usage
 
 ``` php
+// To send a message to a single phone number
 SMSPortal::sendMessage('0112223333', 'Hello world!');
 ```
+
+``` php
+// To send a message to a multiple phone numbers (without text replacements)
+
+$numbers = [
+    "0000000000",
+    "00000000001",
+];
+
+SMSPortal::sendMessage($numbers, 'Hello world!');
+```
+
+
+``` php
+// To send a message to a multiple phone numbers (with text replacements)
+// Replacements must be an array of array arrays with a key attribute and a value attribute
+// Its up to you to determine the key, in this is its ::first_name:: but it could be {first_name}, etc.
+
+$numbers = [
+    "0000000000",
+    "00000000001",
+];
+
+$replacements = [
+    [
+        [
+            "key"   => "::first_name::",
+            "value" => "John"
+        ],
+        [
+            "key"   => "::weather::",
+            "value" => "hot",
+        ]
+    ],
+    [
+        [
+            "key"   => "::first_name::",
+            "value" => "Alice"
+        ],
+        [
+            "key"   => "::weather::",
+            "value" => "cold",
+        ]
+    ],
+]
+
+SMSPortal::sendMessage($numbers, 'Hello ::first_name::, today is ::weather::!', $replacements);
+```
+
 
 ### Changelog
 
